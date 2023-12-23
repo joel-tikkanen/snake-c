@@ -12,12 +12,6 @@
 #define CENTER_Y SCREEN_HEIGHT / 2
 
 
-enum DIRS {
-    UP,
-    RIGHT,
-    LEFT,
-    DOWN
-}; 
 
 typedef struct snake
 {
@@ -66,15 +60,26 @@ void render_snake(struct body_part *head){
     }
     return;
 }
-/* TODO
-void handle_input() {        
-    if (IsKeyDown(KEY_RIGHT)) 
-    if (IsKeyDown(KEY_LEFT))
-    if (IsKeyDown(KEY_UP)) 
-    if (IsKeyDown(KEY_DOWN))
+
+void handle_input(Snake *snake) {        
+    if (IsKeyDown(KEY_RIGHT)) {
+        snake->dir_x = 1;
+        snake->dir_y = 0;
+    };
+    if (IsKeyDown(KEY_LEFT)){
+        snake->dir_x = -1;
+        snake->dir_y = 0;
+    };
+    if (IsKeyDown(KEY_UP)) {
+        snake->dir_x = 0;
+        snake->dir_y = -1;
+    };
+    if (IsKeyDown(KEY_DOWN)){
+        snake->dir_x = 0;
+        snake->dir_y = 1;
+    };
 }
 
-*/
 
 // moves snake to direction provided by player
 void move_to_dir(int dir_x, int dir_y, Snake *snake){
@@ -158,6 +163,7 @@ int main(void)
 
 
         // Update
+        handle_input(&snake);
         move_to_dir(snake.dir_x, snake.dir_y, &snake);
 
         //----------------------------------------------------------------------------------
