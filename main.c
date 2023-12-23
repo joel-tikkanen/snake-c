@@ -1,7 +1,6 @@
 #include "snake.h"
 #include <stdio.h>
 #include "include/raylib.h"
-#include "include/raylib.h"
 #include <stdlib.h>
 #include <time.h>
 
